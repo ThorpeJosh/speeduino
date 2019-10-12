@@ -590,7 +590,13 @@ struct config2 {
   byte aseBins[4]; //Afterstart enrichment temp axis
   byte primePulse[4]; //Priming pulsewidth
   byte primeBins[4]; //Priming temp axis
-  byte unused2_91[37];
+
+  byte vntVaneSweep : 1; //Perform a sweep of the boost controller pre-cranking to prevent VNT vanes from sticking.
+  byte vntUnused : 7;
+  byte vntVaneSweepMinDuty;
+  byte vntVaneSweepMaxDuty;
+
+  byte unused2_94[34];
 
 #if defined(CORE_AVR)
   };
