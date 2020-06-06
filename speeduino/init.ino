@@ -846,7 +846,7 @@ void initialiseAll()
       setFuelSchedule4(100, (primingValue * 100 * 5));
     }
 
-
+    
     initialisationComplete = true;
     digitalWrite(LED_BUILTIN, HIGH);
 }
@@ -1039,7 +1039,7 @@ void setPinMapping(byte boardID)
         pinCoil5 = PD4; //Pin for coil 5
         pinTPS = A0; //TPS input pin
         pinMAP = A1; //MAP sensor pin
-        pinIAT = A2; //IAT sensor pin
+        pinIAT = A2; //IAT sensor pin1
         pinCLT = A3; //CLT sensor pin
         pinO2 = A4; //O2 Sensor pin
         pinBat = A5; //Battery reference voltage pin

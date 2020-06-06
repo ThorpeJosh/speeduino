@@ -39,6 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "init.h"
 #include BOARD_H //Note that this is not a real file, it is defined in globals.h. 
 
+unsigned int test_counter = 0;
+
 void setup()
 {
   initialiseAll();
@@ -135,6 +137,21 @@ void loop()
     //***Perform sensor reads***
     //-----------------------------------------------------------------------------------------------------
     readMAP();
+    if(currentStatus.RPM == 0)
+    {
+      test_counter++;
+      currentStatus.canin[3]=test_counter;
+    }
+    else
+    {
+      currentStatus.canin[3]=test_counter;  
+    }
+    currentStatus.canin[4]=boost_pwm_target_value;
+    currentStatus.canin[10] = configPage2.vntVaneSweep;
+    currentStatus.canin[11] = configPage2.vntVaneSweepMinDuty;
+    currentStatus.canin[12] = configPage2.vntVaneSweepMaxDuty;
+    currentStatus.canin[13] = currentStatus.boostDuty;
+    currentStatus.canin[14] = currentStatus.boostTarget;
     
     if (BIT_CHECK(LOOP_TIMER, BIT_TIMER_15HZ)) //Every 32 loops
     {
